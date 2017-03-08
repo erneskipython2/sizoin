@@ -54,4 +54,4 @@ Puede contartarme directamente, el producto es de mi elaboracion personal y no e
 ## Analisis, Diseno y Desarrollo
 Ing. Inf. Erneski Coronado - 2014
 **email:** newddavid2007@gmail.com
-***linkedin:* linkedin.com/erneski-coronado-2017
+**linkedin:** linkedin.com/erneski-coronado-2017
