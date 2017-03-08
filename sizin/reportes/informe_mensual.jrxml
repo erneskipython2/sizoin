@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<parameter name="sede" class="java.lang.Integer"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\programador\\Documents\\PENDRIVE_TRABAJO_16GB\\PROGRAMACION INSAI 2014\\SIZOIN\\src\\sizo\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_inicio" class="java.lang.String"/>
+	<parameter name="fecha_fin" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT vista_resultado_hemo.animal_muestreado as animal_muestreado, vista_resultado_hemo.resultado as resultado, vista_registro.*
+FROM vista_resultado_hemo join vista_registro on vista_resultado_hemo.id_registro_general=vista_registro.id_registro_general
+WHERE vista_registro.id_sedes_insai=$P{sede} and  STR_TO_DATE(vista_registro.fecha_recepcion, '%d/%m/%Y') between $P{fecha_inicio} and $P{fecha_fin}
+UNION
+
+SELECT vista_resultado_copro.animal_muestreado as animal_muestreado, vista_resultado_copro.resultado as resultado, vista_registro.*
+FROM vista_resultado_copro join vista_registro on vista_resultado_copro.id_registro_general=vista_registro.id_registro_general
+WHERE vista_registro.id_sedes_insai=$P{sede} and  STR_TO_DATE(vista_registro.fecha_recepcion, '%d/%m/%Y') between $P{fecha_inicio} and $P{fecha_fin}
+
+UNION
+
+SELECT vista_resultado_bru.animal_muestreado as animal_muestreado, vista_resultado_bru.resultado as resultado, vista_registro.*
+FROM vista_resultado_bru join vista_registro on vista_resultado_bru.id_registro_general=vista_registro.id_registro_general
+WHERE vista_registro.id_sedes_insai=$P{sede} and  STR_TO_DATE(vista_registro.fecha_recepcion, '%d/%m/%Y') between $P{fecha_inicio} and $P{fecha_fin}
+
+UNION
+
+SELECT vista_resultado_ane.animal_muestreado as animal_muestreado, vista_resultado_ane.resultado as resultado, vista_registro.*
+FROM vista_resultado_ane join vista_registro on vista_resultado_ane.id_registro_general=vista_registro.id_registro_general
+WHERE vista_registro.id_sedes_insai=$P{sede} and STR_TO_DATE(vista_registro.fecha_recepcion, '%d/%m/%Y') between $P{fecha_inicio} and $P{fecha_fin}
+
+UNION
+
+SELECT vista_resultado_hema.animal_muestreado as animal_muestreado, concat_ws('','Hematocrito:',vista_resultado_hema.hematocrito,', Hemoglobina:',vista_resultado_hema.hemoglobina,', C. Rojas:',vista_resultado_hema.rojas,', C. Blancas:',vista_resultado_hema.blancas) as resultado, vista_registro.*
+FROM vista_resultado_hema join vista_registro on vista_resultado_hema.id_registro_general=vista_registro.id_registro_general
+WHERE vista_registro.id_sedes_insai=$P{sede} and  STR_TO_DATE(vista_registro.fecha_recepcion, '%d/%m/%Y') between $P{fecha_inicio} and $P{fecha_fin}
+
+;]]>
+	</queryString>
+	<field name="animal_muestreado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="resultado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_registro_general" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_recepcion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_procesado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="remitente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="protocolo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="analisis_tipo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="predio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="direccion_predio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="utm_este" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="utm_norte" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="superficie" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_predio" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_propietario" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rif" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="propietario" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefono" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_sedes_insai" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sede" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefono_sede" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email_sede" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="direccion_sede" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="responsable_sede" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="analisis_tipo_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{analisis_tipo}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="112">
+			<image>
+				<reportElement x="5" y="0" width="98" height="53"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\DAVID&JUANITA\\Documents\\NetBeansProjects\\sizin\\src\\sizin\\imagenes\\insai.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="214" y="55" width="339" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INFORME MENSUAL DE SOLICITUDES]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="5" y="87" width="416" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Solicitudes Recibidas desde el "+$P{fecha_inicio}+" hasta el "+$P{fecha_fin}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="214" y="15" width="339" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Instituto Nacional de Salud Agrícola Integral]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="214" y="35" width="339" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección de Salud Animal Integral]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="37">
+			<rectangle>
+				<reportElement x="4" y="5" width="748" height="32"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="5" width="54" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº Protocolo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="58" y="5" width="54" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Recepción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="112" y="5" width="54" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Procesado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="165" y="5" width="64" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Productor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="228" y="5" width="43" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RIF/ CI Nº]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="5" width="54" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Predio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="323" y="5" width="65" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="387" y="5" width="49" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UTM este]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="435" y="5" width="49" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UTM norte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="483" y="5" width="49" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de Análisis]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="531" y="5" width="55" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Animal Muestreado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="585" y="5" width="113" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Resultado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="697" y="5" width="55" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Laboratorio]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="73" splitType="Stretch">
+			<rectangle>
+				<reportElement x="4" y="0" width="748" height="71"/>
+			</rectangle>
+			<textField>
+				<reportElement x="5" y="0" width="52" height="71"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{protocolo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="58" y="0" width="54" height="71"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fecha_recepcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="0" width="54" height="71"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fecha_procesado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="166" y="0" width="63" height="71"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{propietario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="229" y="0" width="42" height="71"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{rif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="271" y="0" width="53" height="71"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{predio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="324" y="0" width="64" height="71"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{direccion_predio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="388" y="0" width="48" height="71"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{utm_este}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="436" y="0" width="48" height="71"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{utm_norte}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="484" y="0" width="48" height="71"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{analisis_tipo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="532" y="0" width="53" height="71"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{animal_muestreado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="586" y="0" width="111" height="71"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{resultado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="697" y="0" width="55" height="71"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sede}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="38" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="34" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="709" y="0" width="43" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="510" y="0" width="199" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<line>
+				<reportElement x="1" y="4" width="751" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="5" width="752" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[SIZOIN - Sistema de Información para el Registro y Análisis de Muestras Zoopatógenas del INSAI]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
