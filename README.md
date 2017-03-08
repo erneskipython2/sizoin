@@ -1,5 +1,5 @@
 # sizoin
-Sizoin es un sistema de informacion con interfaz grafica de escritorio que permite el registro, analisis y procesamiento de muestras zoopatogenas bajo las metodologias del Instituto Nacional de Salud Agricola Integral.
+Sizoin es un sistema de informacion con interfaz grafica de escritorio que permite el registro, analisis y procesamiento de muestras zoopatogenas. El producto original fue desarrollado para ser implementado en el Instituto Nacional de Salud Agricola Integral, Venezuela. El fuerte del proyecto se encuentra principalmente en la robusta base de datos que lo sustenta para la integracion de datos taxonomicos (jerarquias que van desde reino hasta subespecies).
 
 ## Principales prestaciones
 - Registro de muestras
@@ -22,7 +22,7 @@ Sizoin es un sistema de informacion con interfaz grafica de escritorio que permi
 - Base de datos enriquecida 
 
 ## Instalacion o adaptacion 
-Puede contartarme directamente, el producto es de mi elaboracion personal y puede ser adaptado en organizaciones similares que requieran analisis sanitarios - zoosanitarios - fitosanitarios con integracion de datos taxonomicos confiables.
+Puede contartarme directamente, el producto es de mi elaboracion personal y no esta sujeto a propiedad del Ente anteriormente senalado y puede ser adaptado en organizaciones similares que requieran analisis sanitarios - zoosanitarios - fitosanitarios con integracion de datos taxonomicos confiables. 
 
 ## Imagenes reales de la aplicacion de escritorio
 ### Menu principal
